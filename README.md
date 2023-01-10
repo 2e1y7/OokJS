@@ -9,7 +9,7 @@
 ## how to start
 
 ```
-pegjs -o parser.js grammer.js
+pegjs -o parser.js grammer.pegjs
 node main.js ***.ook
 node src.js
 ```
