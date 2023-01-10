@@ -25,13 +25,14 @@ token = PointerIncrement /
         LoopZero 
         // LoopNonzero
 
-PointerIncrement = "Ook. Ook?" {return emitPointerIncrementToken();}
-PointerDeincrement = "Ook? Ook." {return emitPointerDeincrementToken();}
-ValueIncrement = "Ook. Ook." {return emitValueIncrementToken();}
-ValueDeincrement = "Ook! Ook!" {return emitValueDeincrementToken();}
-Assignment = "Ook. Ook!" {return emitAssignmentToken();}
-Output = "Ook! Ook." {return emitOutputToken();}
-LoopZero = "Ook! Ook?" {return emitLoopZeroToken();}
+PointerIncrement = "Ook.Ook?" {return emitPointerIncrementToken();}
+PointerDeincrement = "Ook?Ook." {return emitPointerDeincrementToken();}
+ValueIncrement = "Ook.Ook." {return emitValueIncrementToken();}
+ValueDeincrement = "Ook!Ook!" {return emitValueDeincrementToken();}
+Assignment = "Ook.Ook!" {return emitAssignmentToken();}
+Output = "Ook!Ook." {return emitOutputToken();}
+// Output = "3" {return emitOutputToken();}
+LoopZero = "Ook!Ook?" {return emitLoopZeroToken();}
 // LoopNonzero = "Ook? Ook!" {return emitLoopNonzeroToken();}
 
 sp = "\t" / " "

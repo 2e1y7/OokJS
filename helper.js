@@ -168,217 +168,70 @@ function emitPointerDeincrementToken() {
     };
 }
 
+
+
 function emitOutputToken() {
-    return {
-      "type": "ExpressionStatement",
-      "expression": {
-        "type": "CallExpression",
-        "callee": {
-          "type": "MemberExpression",
-          "computed": false,
-          "object": {
-            "type": "Identifier",
-            "name": "console"
-          },
-          "property": {
-            "type": "Identifier",
-            "name": "log"
-          }
-        },
-        "arguments": [
-          {
-            "type": "MemberExpression",
-            "computed": true,
-            "object": {
-              "type": "Identifier",
-              "name": "memory"
-            },
-            "property": {
-              "type": "Identifier",
-              "name": "pointer"
+  return {
+    "type": "ExpressionStatement",
+            "expression": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "Identifier",
+                    "name": "process"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "stdout"
+                  }
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "write"
+                }
+              },
+              "arguments": [
+                {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                      "type": "Identifier",
+                      "name": "String"
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "fromCharCode"
+                    }
+                  },
+                  "arguments": [
+                    {
+                      "type": "MemberExpression",
+                      "computed": true,
+                      "object": {
+                        "type": "Identifier",
+                        "name": "memory"
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "pointer"
+                      }
+                    }
+                  ]
+                }
+              ]
             }
           }
-        ]
-      }
-    };
-}
+  }
 
-// function emitMooToken() {
-//      return {
-//       "type": "IfStatement",
-//       "test": {
-//         "type": "MemberExpression",
-//         "computed": true,
-//         "object": {
-//           "type": "Identifier",
-//           "name": "memory"
-//         },
-//         "property": {
-//           "type": "Identifier",
-//           "name": "pointer"
-//         }
-//       },
-//       "consequent": {
-//         "type": "BlockStatement",
-//         "body": [
-//           {
-//             "type": "ExpressionStatement",
-//             "expression": {
-//               "type": "CallExpression",
-//               "callee": {
-//                 "type": "MemberExpression",
-//                 "computed": false,
-//                 "object": {
-//                   "type": "MemberExpression",
-//                   "computed": false,
-//                   "object": {
-//                     "type": "Identifier",
-//                     "name": "process"
-//                   },
-//                   "property": {
-//                     "type": "Identifier",
-//                     "name": "stdout"
-//                   }
-//                 },
-//                 "property": {
-//                   "type": "Identifier",
-//                   "name": "write"
-//                 }
-//               },
-//               "arguments": [
-//                 {
-//                   "type": "CallExpression",
-//                   "callee": {
-//                     "type": "MemberExpression",
-//                     "computed": false,
-//                     "object": {
-//                       "type": "Identifier",
-//                       "name": "String"
-//                     },
-//                     "property": {
-//                       "type": "Identifier",
-//                       "name": "fromCharCode"
-//                     }
-//                   },
-//                   "arguments": [
-//                     {
-//                       "type": "MemberExpression",
-//                       "computed": true,
-//                       "object": {
-//                         "type": "Identifier",
-//                         "name": "memory"
-//                       },
-//                       "property": {
-//                         "type": "Identifier",
-//                         "name": "pointer"
-//                       }
-//                     }
-//                   ]
-//                 }
-//               ]
-//             }
-//           }
-//         ]
-//       },
-//       "alternate": {
-//         "type": "BlockStatement",
-//         "body": [
-//           {
-//             "type": "ExpressionStatement",
-//             "expression": {
-//               "type": "AssignmentExpression",
-//               "operator": "=",
-//               "left": {
-//                 "type": "MemberExpression",
-//                 "computed": true,
-//                 "object": {
-//                   "type": "Identifier",
-//                   "name": "memory"
-//                 },
-//                 "property": {
-//                   "type": "Identifier",
-//                   "name": "pointer"
-//                 }
-//               },
-//               "right": {
-//                 "type": "CallExpression",
-//                 "callee": {
-//                   "type": "Identifier",
-//                   "name": "Number"
-//                 },
-//                 "arguments": [
-//                   {
-//                     "type": "MemberExpression",
-//                     "computed": true,
-//                     "object": {
-//                       "type": "CallExpression",
-//                       "callee": {
-//                         "type": "MemberExpression",
-//                         "computed": false,
-//                         "object": {
-//                           "type": "CallExpression",
-//                           "callee": {
-//                             "type": "MemberExpression",
-//                             "computed": false,
-//                             "object": {
-//                               "type": "CallExpression",
-//                               "callee": {
-//                                 "type": "Identifier",
-//                                 "name": "require"
-//                               },
-//                               "arguments": [
-//                                 {
-//                                   "type": "Literal",
-//                                   "value": "fs",
-//                                   "raw": "'fs'"
-//                                 }
-//                               ]
-//                             },
-//                             "property": {
-//                               "type": "Identifier",
-//                               "name": "readFileSync"
-//                             }
-//                           },
-//                           "arguments": [
-//                             {
-//                               "type": "Literal",
-//                               "value": "/dev/stdin",
-//                               "raw": "'/dev/stdin'"
-//                             },
-//                             {
-//                               "type": "Literal",
-//                               "value": "utf8",
-//                               "raw": "'utf8'"
-//                             }
-//                           ]
-//                         },
-//                         "property": {
-//                           "type": "Identifier",
-//                           "name": "split"
-//                         }
-//                       },
-//                       "arguments": [
-//                         {
-//                           "type": "Literal",
-//                           "value": "\n",
-//                           "raw": "'\\n'"
-//                         }
-//                       ]
-//                     },
-//                     "property": {
-//                       "type": "Literal",
-//                       "value": 0,
-//                       "raw": "0"
-//                     }
-//                   }
-//                 ]
-//               }
-//             }
-//           }
-//         ]
-//       }
-//     };
-// }
+
+
 
 function emitLoopZeroToken(content) {
     const flatten = _.flattenDeep(content);
@@ -402,124 +255,6 @@ function emitLoopZeroToken(content) {
       }
     }
 }
-
-// function emitMMMToken() {
-//     return {
-//       "type": "IfStatement",
-//       "test": {
-//         "type": "BinaryExpression",
-//         "operator": "==",
-//         "left": {
-//           "type": "Identifier",
-//           "name": "register"
-//         },
-//         "right": {
-//           "type": "Literal",
-//           "value": null,
-//           "raw": "null"
-//         }
-//       },
-//       "consequent": {
-//         "type": "BlockStatement",
-//         "body": [
-//           {
-//             "type": "ExpressionStatement",
-//             "expression": {
-//               "type": "AssignmentExpression",
-//               "operator": "=",
-//               "left": {
-//                 "type": "Identifier",
-//                 "name": "register"
-//               },
-//               "right": {
-//                 "type": "MemberExpression",
-//                 "computed": true,
-//                 "object": {
-//                   "type": "Identifier",
-//                   "name": "memory"
-//                 },
-//                 "property": {
-//                   "type": "Identifier",
-//                   "name": "pointer"
-//                 }
-//               }
-//             }
-//           }
-//         ]
-//       },
-//       "alternate": {
-//         "type": "BlockStatement",
-//         "body": [
-//           {
-//             "type": "ExpressionStatement",
-//             "expression": {
-//               "type": "AssignmentExpression",
-//               "operator": "=",
-//               "left": {
-//                 "type": "MemberExpression",
-//                 "computed": true,
-//                 "object": {
-//                   "type": "Identifier",
-//                   "name": "memory"
-//                 },
-//                 "property": {
-//                   "type": "Identifier",
-//                   "name": "pointer"
-//                 }
-//               },
-//               "right": {
-//                 "type": "Identifier",
-//                 "name": "register"
-//               }
-//             }
-//           },
-//           {
-//             "type": "ExpressionStatement",
-//             "expression": {
-//               "type": "BinaryExpression",
-//               "operator": "==",
-//               "left": {
-//                 "type": "Identifier",
-//                 "name": "register"
-//               },
-//               "right": {
-//                 "type": "Literal",
-//                 "value": null,
-//                 "raw": "null"
-//               }
-//             }
-//           }
-//         ]
-//       }
-//     };
-// }
-
-// function emitOOOToken() {
-//     return {
-//       "type": "ExpressionStatement",
-//       "expression": {
-//         "type": "AssignmentExpression",
-//         "operator": "=",
-//         "left": {
-//           "type": "MemberExpression",
-//           "computed": true,
-//           "object": {
-//             "type": "Identifier",
-//             "name": "memory"
-//           },
-//           "property": {
-//             "type": "Identifier",
-//             "name": "pointer"
-//           }
-//         },
-//         "right": {
-//           "type": "Literal",
-//           "value": 0,
-//           "raw": "0"
-//         }
-//       }
-//     };
-// }
 
 function emitAssignmentToken() {
     return {
