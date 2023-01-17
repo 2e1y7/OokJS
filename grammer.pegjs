@@ -8,7 +8,7 @@
         emitAssignmentToken,
         emitOutputToken,
         emitLoopZeroToken,
-        // emitLoopNonzeroToken
+        // emitLoopNonzeroToken,
     } = require("./helper");
 }
 
@@ -32,8 +32,11 @@ ValueDeincrement = "Ook!Ook!" {return emitValueDeincrementToken();}
 Assignment = "Ook.Ook!" {return emitAssignmentToken();}
 Output = "Ook!Ook." {return emitOutputToken();}
 // Output = "3" {return emitOutputToken();}
-LoopZero = "Ook!Ook?" {return emitLoopZeroToken();}
-// LoopNonzero = "Ook? Ook!" {return emitLoopNonzeroToken();}
+// LoopZero = "Ook!Ook?" {return emitLoopZeroToken();}
+// LoopNonzero = "Ook?Ook!" {return emitLoopNonzeroToken();}
+
+LoopZero = "Ook!Ook?" line:line* sp* instr:instruction* "Ook?Ook!"
+    {const content = line.concat(instr); return emitLoopZeroToken(content);}
 
 sp = "\t" / " "
 nl = "\r" / "\n"
